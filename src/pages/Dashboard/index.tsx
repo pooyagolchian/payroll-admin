@@ -1,4 +1,3 @@
-import MainLayout from "../MainLayout";
 
 const Dashboard = () => {
     // const navigate = useNavigate();
@@ -8,7 +7,9 @@ const Dashboard = () => {
     // };
 
     return (
-        <MainLayout />
+        <>
+        hi
+        </>
     );
 };
 
