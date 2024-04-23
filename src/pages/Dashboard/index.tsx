@@ -1,16 +1,11 @@
-
 const Dashboard = () => {
-    // const navigate = useNavigate();
-    // const handleLogout = () => {
-    //     localStorage.removeItem('token');
-    //     navigate('/');
-    // };
+  // const navigate = useNavigate();
+  // const handleLogout = () => {
+  //     localStorage.removeItem('token');
+  //     navigate('/');
+  // };
 
-    return (
-        <>
-        hi
-        </>
-    );
-};
+  return <>hi</>
+}
 
-export default Dashboard;
+export default Dashboard

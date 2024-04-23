@@ -1,8 +1,5 @@
 const Salaries = () => {
-
-
-
-    return <div>Salaries</div>
+  return <div>Salaries</div>
 }
 
-export default  Salaries
+export default Salaries
