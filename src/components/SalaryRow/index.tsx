@@ -11,16 +11,16 @@ type SalaryRowProps = {
 };
 
 function SalaryRow({ employee }: SalaryRowProps) {
-  const [additions, setAdditions] = useState(0);
-  const [deductions, setDeductions] = useState(0);
-  const [isGratuity, setIsGratuity] = useState(false);
+  const [additions, setAdditions] = useState<number>(0);
+  const [deductions, setDeductions] = useState<number>(0);
+  const [isGratuity, setIsGratuity] = useState<boolean>(false);
 
   const handleAdditionsChange = (value: string) => {
-    setAdditions(parseFloat(value));
+    setAdditions(parseFloat(value)); // Default to 0 if NaN
   };
 
   const handleDeductionsChange = (value: string) => {
-    setDeductions(parseFloat(value));
+    setDeductions(parseFloat(value)); // Default to 0 if NaN
   };
 
   const handleGratuityChange = (checked: boolean) => {
@@ -28,8 +28,8 @@ function SalaryRow({ employee }: SalaryRowProps) {
   };
 
   const totalSalary =
-    Number(employee?.basicSalary) +
-    Number(employee?.salaryAllowances) +
+    Number(employee.basicSalary) +
+    Number(employee.salaryAllowances) +
     Number(additions) -
     Number(deductions);
 
