@@ -16,8 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Money, Person, Logout, Dashboard } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -129,22 +128,43 @@ export default function DrawerMenu() {
         <Divider />
         <List>
           {[
-            { link: '/employees', title: 'Employees' },
+            {
+              link: '/dashboard',
+              title: 'Dashboard',
+              icon: <Dashboard />,
+              action: () => {},
+            },
+            {
+              link: '/employees',
+              title: 'Employees',
+              icon: <Person />,
+              action: () => {},
+            },
             {
               link: '/salaries',
               title: 'Salaries',
+              icon: <Money />,
+              action: () => {},
+            },
+            {
+              link: '/login',
+              title: 'Logout',
+              icon: <Logout />,
+              action: () => {
+                localStorage.removeItem('token');
+              },
             },
           ].map((text, index) => (
-            <ListItem key={text.title} disablePadding>
+            // eslint-disable-next-line react/no-array-index-key
+            <ListItem key={index} disablePadding>
               <ListItemButton
                 onClick={() => {
                   navigate(text.link);
                   setOpen(!open);
+                  text.action();
                 }}
               >
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+                <ListItemIcon>{text.icon}</ListItemIcon>
                 <ListItemText primary={text.title} />
               </ListItemButton>
             </ListItem>
