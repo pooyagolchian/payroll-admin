@@ -28,7 +28,7 @@ function Salaries() {
       </TableHead>
       <TableBody>
         {employees.map((employee) => (
-          <SalaryRow key={employee.id} employee={employee} />
+          <SalaryRow key={employee?.id} employee={employee} />
         ))}
       </TableBody>
     </Table>

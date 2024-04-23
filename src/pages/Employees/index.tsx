@@ -1,5 +1,4 @@
-import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   TextField,
@@ -16,14 +15,13 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { useDispatch, useSelector } from 'react-redux';
-// eslint-disable-next-line import/extensions,import/no-cycle
 import { RootState } from '../../store/store.ts';
-// eslint-disable-next-line import/extensions
 import { addEmployee } from '../../store/employeesSlice.ts';
 
 export type FormValues = {
+  id: number;
   staffId: string;
   name: string;
   joiningDate: string;
@@ -31,13 +29,13 @@ export type FormValues = {
   salaryAllowances: number;
 };
 
-const Employees: React.FC = () => {
+const Employees = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
 
