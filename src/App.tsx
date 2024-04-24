@@ -1,11 +1,17 @@
-import { Routes } from './routes'
+import { Routes } from './routes';
+import { useMemo } from 'react';
 
-function App() {
+const App = () => {
+  const checkToken = useMemo(() => {
+    const token = localStorage.getItem('token');
+    return token === 'fake-token';
+  }, []);
+
   return (
     <>
-      <Routes isAuthorized={true} />
+      <Routes isAuthorized={checkToken} />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

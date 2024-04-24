@@ -1,33 +1,33 @@
-import flattenDeep from 'lodash/flattenDeep'
-import { Route, Routes as ReactRoutes } from 'react-router-dom'
-import ProtectedRoute from './ProtectedRoute'
-import React from 'react'
+import flattenDeep from 'lodash/flattenDeep';
+import { Route, Routes as ReactRoutes, Navigate } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import React from 'react';
 
 interface RouteConfig {
-  path?: string
-  component?: React.ComponentType
-  routes?: RouteConfig[]
-  layout?: React.ComponentType
-  name?: string
+  path?: string;
+  component?: React.ComponentType;
+  routes?: RouteConfig[];
+  layout?: React.ComponentType;
+  name?: string;
 }
 
 const generateFlattenRoutes = (
   routes: RouteConfig[] | undefined
 ): RouteConfig[] => {
-  if (!routes) return []
+  if (!routes) return [];
   return flattenDeep(
     routes.map(({ routes: subRoutes, ...rest }) => [
       rest,
       generateFlattenRoutes(subRoutes),
     ])
-  )
-}
+  );
+};
 
 export const renderRoutes = (mainRoutes: any) => {
   return ({ isAuthorized }: any) => {
     const layouts = mainRoutes.map(
       ({ layout: Layout, routes }: any, index: any) => {
-        const subRoutes = generateFlattenRoutes(routes)
+        const subRoutes = generateFlattenRoutes(routes);
         return (
           <Route key={index} element={<Layout />}>
             {subRoutes.map(
@@ -46,13 +46,18 @@ export const renderRoutes = (mainRoutes: any) => {
                       <Route element={<Component />} path={path} />
                     )}
                   </Route>
-                )
+                );
               }
             )}
           </Route>
-        )
+        );
       }
-    )
-    return <ReactRoutes>{layouts}</ReactRoutes>
-  }
-}
+    );
+    return (
+      <ReactRoutes>
+        <Route path="/" element={<Navigate replace to="/login" />} />
+        {layouts}
+      </ReactRoutes>
+    );
+  };
+};
