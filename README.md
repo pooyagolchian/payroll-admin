@@ -1,4 +1,42 @@
-# React + TypeScript + Vite
+# Payroll Admin Panel -  React + TypeScript + Vite + MUI
+
+- Login
+- Register
+- Payment history
+- Add Employees
+- Add allowance and deduction to salary
+- Fake token for authorization and router
+
+---
+### SOLID
+
+Regarding the `S` for `SOLID` I just tried to keep each function(component as a function as well)
+just be responsible for a single task. That's why I just created a separate component for every part
+and also keep it simple stupid.
+
+### Prettier
+
+Using [Prettier](https://prettier.io/) for opinionated code formatter.
+It will take care of the formatting for you.
+Prettier creates an abstract syntax tree from your code and uses it to write new code formatted according to a set of rules.
+In addition, I check pretty before every commit by adding a pre-commit hook. For more detail check package.json, husky section.
+
+---
+
+### Dependencies
+- Node.js (version)
+- React.js (version)
+- Vite
+- Tailwind CSS
+- MUI
+- Typescript
+---
+
+
+
+
+
+# React + TypeScript + Vite Documents
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
