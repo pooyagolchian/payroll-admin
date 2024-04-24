@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 const AnonymousLayout = () => {
-  return <Outlet />
-}
+  return <Outlet />;
+};
 
-export default AnonymousLayout
+export default AnonymousLayout;

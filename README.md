@@ -1,4 +1,4 @@
-# Payroll Admin Panel -  React + TypeScript + Vite + MUI
+# Payroll Admin Panel - React + TypeScript + Vite + MUI
 
 - Login
 - Register
@@ -8,6 +8,7 @@
 - Fake token for authorization and router
 
 ---
+
 ### SOLID
 
 Regarding the `S` for `SOLID` I just tried to keep each function(component as a function as well)
@@ -24,17 +25,15 @@ In addition, I check pretty before every commit by adding a pre-commit hook. For
 ---
 
 ### Dependencies
+
 - Node.js (version)
 - React.js (version)
 - Vite
 - Tailwind CSS
 - MUI
 - Typescript
+
 ---
-
-
-
-
 
 # React + TypeScript + Vite Documents
 
@@ -60,7 +59,7 @@ export default {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
