@@ -163,8 +163,7 @@ export default function DrawerMenu() {
               title: 'Logout',
               icon: <Logout />,
               action: () => {
-                localStorage.removeItem('token');
-                window.location.reload();
+                localStorage.clear();
               },
             },
           ].map((text, index) => (
