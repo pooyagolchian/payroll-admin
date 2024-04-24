@@ -8,7 +8,6 @@ import Employees from '../pages/Employees';
 import Salaries from '../pages/Salaries';
 import PaymentLog from '../pages/PaymentLog';
 import { renderRoutes } from './generate-routes.tsx';
-import { Navigate } from 'react-router-dom';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const routes = [
@@ -61,12 +60,6 @@ export const routes = [
         component: PaymentLog,
         path: '/payment-log',
         isPublic: false,
-      },
-      {
-        name: 'redirect',
-        title: 'redirect',
-        component: <Navigate replace to="/login" />,
-        path: '/',
       },
     ],
   },
