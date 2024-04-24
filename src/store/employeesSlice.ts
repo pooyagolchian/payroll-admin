@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { FormValues } from '../pages/Employees';
 
 type EmployeeState = {
@@ -56,10 +56,10 @@ export const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {
-    addEmployee: (state, action: PayloadAction<FormValues>) => {
+    addEmployee: (state, action) => {
       state.employees.push(action.payload);
     },
-    paySalary: (state, action: PayloadAction<string>) => {
+    paySalary: (state, action) => {
       const index = state.employees.findIndex(
         (emp) => emp.staffId === action.payload
       );
