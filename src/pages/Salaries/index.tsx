@@ -14,24 +14,27 @@ function Salaries() {
   const employees = useSelector(selectEmployees);
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>Name</TableCell>
-          <TableCell>Basic Salary</TableCell>
-          <TableCell>Allowances</TableCell>
-          <TableCell>Additions</TableCell>
-          <TableCell>Deductions</TableCell>
-          <TableCell>Total</TableCell>
-          <TableCell>Gratuity</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {employees.map((employee) => (
-          <SalaryRow key={employee?.id} employee={employee} />
-        ))}
-      </TableBody>
-    </Table>
+    <div className="py-10">
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Basic Salary</TableCell>
+            <TableCell>Allowances</TableCell>
+            <TableCell>Additions</TableCell>
+            <TableCell>Deductions</TableCell>
+            <TableCell>Total</TableCell>
+            <TableCell>Gratuity</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {employees.map((employee) => (
+            <SalaryRow key={employee?.id} employee={employee} />
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }
 

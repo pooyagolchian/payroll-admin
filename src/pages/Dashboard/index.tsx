@@ -1,11 +1,9 @@
 const Dashboard = () => {
-  // const navigate = useNavigate();
-  // const handleLogout = () => {
-  //     localStorage.removeItem('token');
-  //     navigate('/');
-  // };
+  return (
+    <>
+      <h1 className="text-4xl font-bold py-10">Payroll admin</h1>
+    </>
+  );
+};
 
-  return <>hi</>
-}
-
-export default Dashboard
+export default Dashboard;

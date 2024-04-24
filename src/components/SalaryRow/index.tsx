@@ -1,9 +1,18 @@
-import { useState } from 'react';
-import { TableCell, TableRow, TextField, Checkbox } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  TableCell,
+  TableRow,
+  TextField,
+  Checkbox,
+  Button,
+} from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
+import { paySalary } from '../../store/employeesSlice.ts';
 
 type SalaryRowProps = {
   employee: {
-    id?: string;
+    staffId?: string;
     name?: string;
     basicSalary?: number;
     salaryAllowances?: number;
@@ -14,27 +23,44 @@ function SalaryRow({ employee }: SalaryRowProps) {
   const [additions, setAdditions] = useState<number>(0);
   const [deductions, setDeductions] = useState<number>(0);
   const [isGratuity, setIsGratuity] = useState<boolean>(false);
+  const employees = useSelector(
+    (state: RootState) => state.employees.employees
+  );
 
-  const handleAdditionsChange = (value: string) => {
-    setAdditions(parseFloat(value)); // Default to 0 if NaN
+  const dispatch = useDispatch();
+
+  const handleAdditionsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setAdditions(parseFloat(event.target.value));
   };
 
-  const handleDeductionsChange = (value: string) => {
-    setDeductions(parseFloat(value)); // Default to 0 if NaN
+  const handleDeductionsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDeductions(parseFloat(event.target.value));
   };
 
-  const handleGratuityChange = (checked: boolean) => {
-    setIsGratuity(checked);
+  const handleGratuityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsGratuity(event.target.checked);
   };
 
   const totalSalary =
     Number(employee.basicSalary) +
     Number(employee.salaryAllowances) +
-    Number(additions) -
-    Number(deductions);
+    additions -
+    deductions;
+
+  const handlePay = () => {
+    if (employee.staffId) {
+      // console.log(employee.staffId, totalSalary, isGratuity);
+      dispatch(paySalary(employee?.staffId));
+      console.log(employees);
+    }
+  };
 
   return (
-    <TableRow key={employee.id}>
+    <TableRow key={employee.staffId}>
       <TableCell>{employee.name}</TableCell>
       <TableCell>{employee.basicSalary}</TableCell>
       <TableCell>{employee.salaryAllowances}</TableCell>
@@ -42,22 +68,24 @@ function SalaryRow({ employee }: SalaryRowProps) {
         <TextField
           type="number"
           value={additions}
-          onChange={(e) => handleAdditionsChange(e.target.value)}
+          onChange={handleAdditionsChange}
         />
       </TableCell>
       <TableCell>
         <TextField
           type="number"
           value={deductions}
-          onChange={(e) => handleDeductionsChange(e.target.value)}
+          onChange={handleDeductionsChange}
         />
       </TableCell>
       <TableCell>{totalSalary || 0}</TableCell>
       <TableCell>
-        <Checkbox
-          checked={isGratuity}
-          onChange={(e) => handleGratuityChange(e.target.checked)}
-        />
+        <Checkbox checked={isGratuity} onChange={handleGratuityChange} />
+      </TableCell>
+      <TableCell>
+        <Button variant="contained" color="primary" onClick={handlePay}>
+          Pay
+        </Button>
       </TableCell>
     </TableRow>
   );

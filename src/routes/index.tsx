@@ -1,12 +1,13 @@
-import AnonymousLayout from '../layouts/AnonymousLayout'
-import MainLayout from '../layouts/MainLayout'
+import AnonymousLayout from '../layouts/AnonymousLayout';
+import MainLayout from '../layouts/MainLayout';
 
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import Dashboard from '../pages/Dashboard'
-import Employees from '../pages/Employees'
-import Salaries from '../pages/Salaries'
-import { renderRoutes } from './generate-routes.tsx'
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+import Dashboard from '../pages/Dashboard';
+import Employees from '../pages/Employees';
+import Salaries from '../pages/Salaries';
+import PaymentLog from '../pages/PaymentLog';
+import { renderRoutes } from './generate-routes.tsx';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const routes = [
@@ -50,8 +51,14 @@ export const routes = [
         component: Salaries,
         path: '/salaries',
       },
+      {
+        name: 'paymentLog',
+        title: 'Payment log page',
+        component: PaymentLog,
+        path: '/payment-log',
+      },
     ],
   },
-]
+];
 
-export const Routes = renderRoutes(routes)
+export const Routes = renderRoutes(routes);
