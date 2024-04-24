@@ -16,7 +16,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Money, Person, Logout, Dashboard } from '@mui/icons-material';
+import {
+  Money,
+  Person,
+  Logout,
+  Dashboard,
+  Payments,
+} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -147,6 +153,12 @@ export default function DrawerMenu() {
               action: () => {},
             },
             {
+              link: '/payment-log',
+              title: 'Payment log',
+              icon: <Payments />,
+              action: () => {},
+            },
+            {
               link: '/login',
               title: 'Logout',
               icon: <Logout />,
@@ -155,7 +167,6 @@ export default function DrawerMenu() {
               },
             },
           ].map((text, index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <ListItem key={index} disablePadding>
               <ListItemButton
                 onClick={() => {
