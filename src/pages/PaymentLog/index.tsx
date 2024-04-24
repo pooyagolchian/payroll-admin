@@ -18,6 +18,7 @@ export type FormValues = {
   joiningDate: string;
   basicSalary: number;
   salaryAllowances: number;
+  paymentDate?: string;
 };
 
 const PaymentLog = () => {
@@ -36,6 +37,7 @@ const PaymentLog = () => {
               <TableCell>Joining Date</TableCell>
               <TableCell>Basic Salary</TableCell>
               <TableCell>Salary Allowances</TableCell>
+              <TableCell>Payment Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -46,6 +48,7 @@ const PaymentLog = () => {
                 <TableCell>{employee.joiningDate}</TableCell>
                 <TableCell>{employee.basicSalary}</TableCell>
                 <TableCell>{employee.salaryAllowances}</TableCell>
+                <TableCell>{employee.paymentDate}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -65,6 +65,7 @@ export const employeesSlice = createSlice({
       );
       if (index !== -1) {
         const [removedEmployee] = state.employees.splice(index, 1);
+        removedEmployee.paymentDate = new Date().toISOString().slice(0, 10);
         state.removedEmployeesLog.push(removedEmployee);
       }
     },

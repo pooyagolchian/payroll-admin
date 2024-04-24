@@ -6,8 +6,7 @@ import {
   Checkbox,
   Button,
 } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store.ts';
+import { useDispatch } from 'react-redux';
 import { paySalary } from '../../store/employeesSlice.ts';
 
 type SalaryRowProps = {
@@ -23,9 +22,6 @@ function SalaryRow({ employee }: SalaryRowProps) {
   const [additions, setAdditions] = useState<number>(0);
   const [deductions, setDeductions] = useState<number>(0);
   const [isGratuity, setIsGratuity] = useState<boolean>(false);
-  const employees = useSelector(
-    (state: RootState) => state.employees.employees
-  );
 
   const dispatch = useDispatch();
 
@@ -52,10 +48,8 @@ function SalaryRow({ employee }: SalaryRowProps) {
     deductions;
 
   const handlePay = () => {
-    if (employee.staffId) {
-      // console.log(employee.staffId, totalSalary, isGratuity);
+    if (employee.staffId && isGratuity) {
       dispatch(paySalary(employee?.staffId));
-      console.log(employees);
     }
   };
 

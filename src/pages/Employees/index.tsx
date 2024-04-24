@@ -21,12 +21,13 @@ import { RootState } from '../../store/store.ts';
 import { addEmployee } from '../../store/employeesSlice.ts';
 
 export type FormValues = {
-  id: number;
-  staffId: string;
-  name: string;
-  joiningDate: string;
-  basicSalary: number;
-  salaryAllowances: number;
+  id?: number;
+  staffId?: string;
+  name?: string;
+  joiningDate?: string;
+  basicSalary?: number;
+  salaryAllowances?: number;
+  paymentDate?: string;
 };
 
 const Employees = () => {
