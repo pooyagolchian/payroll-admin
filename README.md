@@ -1,7 +1,7 @@
 # Payroll Admin Panel - React + TypeScript + Vite + MUI
 
-- Login
-- Register
+- Fake Login (/login)
+- Register  (/register)
 - Payment history
 - Add Employees
 - Add allowance and deduction to salary
